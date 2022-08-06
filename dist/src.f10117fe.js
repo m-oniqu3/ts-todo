@@ -133,19 +133,24 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
     todo: input.value,
     completed: false,
     createdAt: new Date().toDateString()
-  };
+  }; //add todo to the array
+
   var items = [];
   items.unshift(newTodo);
-  addTodo(items);
+  addTodo(items); //clear input
+
   input.value = "";
-});
+}); //add todo to the list
 
 var addTodo = function addTodo(items) {
   items.map(function (item) {
+    //create li and div elements
     var listItem = document.createElement("li");
-    var div = document.createElement("div");
+    var div = document.createElement("div"); //create label and store todo in label
+
     var name = document.createElement("label");
-    name.textContent = item.todo;
+    name.textContent = item.todo; //create checkbox
+
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.addEventListener("change", function () {

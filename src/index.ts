@@ -24,22 +24,28 @@ form?.addEventListener("submit", (e) => {
     createdAt: new Date().toDateString(),
   };
 
+  //add todo to the array
   const items: Todo[] = [];
   items.unshift(newTodo);
 
   addTodo(items);
 
+  //clear input
   input.value = "";
 });
 
+//add todo to the list
 const addTodo = (items: Todo[]) => {
   items.map((item) => {
+    //create li and div elements
     const listItem = document.createElement("li");
     const div = document.createElement("div");
 
+    //create label and store todo in label
     const name = document.createElement("label");
     name.textContent = item.todo;
 
+    //create checkbox
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
 
