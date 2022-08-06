@@ -118,9 +118,45 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"src/index.ts":[function(require,module,exports) {
-"use strict";
+"use strict"; // variables
 
-console.log("hi");
+var form = document.querySelector("form");
+var input = document.querySelector("#input");
+var list = document.querySelector("ul"); //event listener on form
+
+form === null || form === void 0 ? void 0 : form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (input.value === "") alert("Input cannot be null"); //create new todo
+
+  var newTodo = {
+    id: new Date().getTime(),
+    todo: input.value,
+    completed: false,
+    createdAt: new Date().toDateString()
+  };
+  addTodo(newTodo);
+  input.value = "";
+});
+
+var addTodo = function addTodo(todo) {
+  //create list item
+  var listItem = document.createElement("li");
+  var div = document.createElement("div"); //name
+
+  var name = document.createElement("p");
+  name.textContent = todo.todo; //checkbox
+
+  var check = document.createElement("input");
+  check.textContent = "completed";
+  check.checked = todo.completed;
+  check.type = "checkbox"; //date
+
+  var date = document.createElement("p");
+  div.append(check, name, date);
+  listItem.appendChild(div);
+  list === null || list === void 0 ? void 0 : list.classList.add("todo");
+  list === null || list === void 0 ? void 0 : list.append(listItem);
+};
 },{}],"../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
