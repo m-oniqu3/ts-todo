@@ -5,8 +5,34 @@
 }
 
 .todo {
-    display: flex;
+    /* display: flex; */
+    justify-content: space-between;
     gap: 1rem;
+    padding: 1rem 2rem;
+
+}
+
+.todo label {
+    padding-left: 10px;
+}
+
+.todo p {
+    padding-left: 1.5rem;
+
+}
+
+.delete {
+    color: white;
+    cursor: pointer;
+    border: none;
+    background: black;
+    padding: 10px 20px;
+
+}
+
+.complete {
+    text-decoration: line-through;
+    opacity: 0.5;
 }
 
 /*# sourceMappingURL=/style.c61ab535.css.map */

@@ -143,19 +143,28 @@ var addTodo = function addTodo(todo) {
   var listItem = document.createElement("li");
   var div = document.createElement("div"); //name
 
-  var name = document.createElement("p");
+  var name = document.createElement("label");
   name.textContent = todo.todo; //checkbox
 
-  var check = document.createElement("input");
-  check.textContent = "completed";
-  check.checked = todo.completed;
-  check.type = "checkbox"; //date
+  var checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.addEventListener("change", function () {
+    //set todo to the state of the checkbox
+    todo.completed = checkbox.checked;
+    listItem.classList.toggle("complete");
+  }); //date
 
   var date = document.createElement("p");
-  date.textContent = todo.createdAt;
-  listItem.append(check, name, date); //   listItem.appendChild(l);
+  date.textContent = todo.createdAt; //button
 
-  listItem === null || listItem === void 0 ? void 0 : listItem.classList.add("todo");
+  var deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.classList.add("delete"); //add todo items to div then list item
+
+  div.append(checkbox, name, date);
+  listItem.append(div, deleteButton);
+  listItem === null || listItem === void 0 ? void 0 : listItem.classList.add("todo"); //add list item to the list
+
   list === null || list === void 0 ? void 0 : list.append(listItem);
 };
 },{}],"../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
