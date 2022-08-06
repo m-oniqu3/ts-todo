@@ -134,38 +134,43 @@ form === null || form === void 0 ? void 0 : form.addEventListener("submit", func
     completed: false,
     createdAt: new Date().toDateString()
   };
-  addTodo(newTodo);
+  var items = [];
+  items.unshift(newTodo);
+  addTodo(items);
   input.value = "";
 });
 
-var addTodo = function addTodo(todo) {
-  //create list item
-  var listItem = document.createElement("li");
-  var div = document.createElement("div"); //name
+var addTodo = function addTodo(items) {
+  items.map(function (item) {
+    var listItem = document.createElement("li");
+    var div = document.createElement("div");
+    var name = document.createElement("label");
+    name.textContent = item.todo;
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.addEventListener("change", function () {
+      //set todo to the state of the checkbox
+      item.completed = checkbox.checked;
+      listItem.classList.toggle("complete");
+    }); //date
 
-  var name = document.createElement("label");
-  name.textContent = todo.todo; //checkbox
+    var date = document.createElement("p");
+    date.textContent = item.createdAt; //button
 
-  var checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.addEventListener("change", function () {
-    //set todo to the state of the checkbox
-    todo.completed = checkbox.checked;
-    listItem.classList.toggle("complete");
-  }); //date
+    var deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList.add("delete"); //remove current list item
 
-  var date = document.createElement("p");
-  date.textContent = todo.createdAt; //button
+    deleteButton.addEventListener("click", function () {
+      list === null || list === void 0 ? void 0 : list.removeChild(listItem);
+    }); //add todo items to div then list item
 
-  var deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.classList.add("delete"); //add todo items to div then list item
+    div.append(checkbox, name, date);
+    listItem.append(div, deleteButton);
+    listItem === null || listItem === void 0 ? void 0 : listItem.classList.add("todo"); //add list item to the list
 
-  div.append(checkbox, name, date);
-  listItem.append(div, deleteButton);
-  listItem === null || listItem === void 0 ? void 0 : listItem.classList.add("todo"); //add list item to the list
-
-  list === null || list === void 0 ? void 0 : list.append(listItem);
+    list === null || list === void 0 ? void 0 : list.append(listItem);
+  });
 };
 },{}],"../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

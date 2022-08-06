@@ -4,28 +4,44 @@
     box-sizing: border-box;
 }
 
+form,
+ul {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
 .todo {
-    /* display: flex; */
+    display: flex;
     justify-content: space-between;
+    align-items: start;
     gap: 1rem;
     padding: 1rem 2rem;
+    margin: .5rem 0;
+}
 
+.todo div {
+    width: 100%;
 }
 
 .todo label {
     padding-left: 10px;
+    width: 100%;
 }
 
-.todo p {
-    padding-left: 1.5rem;
 
-}
+
 
 .delete {
-    color: white;
     cursor: pointer;
-    border: none;
-    background: black;
+    border: 1px solid #000000;
     padding: 10px 20px;
 
 }

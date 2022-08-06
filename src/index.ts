@@ -24,43 +24,51 @@ form?.addEventListener("submit", (e) => {
     createdAt: new Date().toDateString(),
   };
 
-  addTodo(newTodo);
+  const items: Todo[] = [];
+  items.unshift(newTodo);
+
+  addTodo(items);
+
   input.value = "";
 });
 
-const addTodo = (todo: Todo) => {
-  //create list item
-  const listItem = document.createElement("li");
-  const div = document.createElement("div");
+const addTodo = (items: Todo[]) => {
+  items.map((item) => {
+    const listItem = document.createElement("li");
+    const div = document.createElement("div");
 
-  //name
-  const name = document.createElement("label");
-  name.textContent = todo.todo;
+    const name = document.createElement("label");
+    name.textContent = item.todo;
 
-  //checkbox
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
-  checkbox.addEventListener("change", () => {
-    //set todo to the state of the checkbox
-    todo.completed = checkbox.checked;
-    listItem.classList.toggle("complete");
+    checkbox.addEventListener("change", () => {
+      //set todo to the state of the checkbox
+      item.completed = checkbox.checked;
+      listItem.classList.toggle("complete");
+    });
+
+    //date
+    const date = document.createElement("p");
+    date.textContent = item.createdAt;
+
+    //button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList.add("delete");
+
+    //remove current list item
+    deleteButton.addEventListener("click", () => {
+      list?.removeChild(listItem);
+    });
+
+    //add todo items to div then list item
+    div.append(checkbox, name, date);
+    listItem.append(div, deleteButton);
+    listItem?.classList.add("todo");
+
+    //add list item to the list
+    list?.append(listItem);
   });
-
-  //date
-  const date = document.createElement("p");
-  date.textContent = todo.createdAt;
-
-  //button
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Delete";
-  deleteButton.classList.add("delete");
-
-  //add todo items to div then list item
-  div.append(checkbox, name, date);
-  listItem.append(div, deleteButton);
-  listItem?.classList.add("todo");
-
-  //add list item to the list
-  list?.append(listItem);
 };
