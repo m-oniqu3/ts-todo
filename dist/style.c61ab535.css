@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.todo {
+    display: flex;
+    gap: 1rem;
+}
+
+/*# sourceMappingURL=/style.c61ab535.css.map */

@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/style.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"style.c61ab535.css","sourceRoot":"..","sourcesContent":["* {\r\n    padding: 0;\r\n    margin: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.todo {\r\n    display: flex;\r\n    gap: 1rem;\r\n}"]}

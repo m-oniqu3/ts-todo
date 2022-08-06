@@ -44,11 +44,12 @@ const addTodo = (todo: Todo) => {
 
   //date
   const date = document.createElement("p");
+  date.textContent = todo.createdAt;
 
-  div.append(check, name, date);
+  listItem.append(check, name, date);
 
-  listItem.appendChild(div);
-  list?.classList.add("todo");
+  //   listItem.appendChild(l);
+  listItem?.classList.add("todo");
 
   list?.append(listItem);
 };
