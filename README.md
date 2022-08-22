@@ -6,7 +6,7 @@ This is a simple to-do list made with Html, Css and TypeScript to practice the b
 
 ### Installation
 
-To run this app on locally, you need to install parcel globally
+To run this app on locally, you need to clone the repo and install parcel globally
 
 ```bash
 npm install parcel-bundler -g
